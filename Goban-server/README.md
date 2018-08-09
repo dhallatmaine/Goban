@@ -1,6 +1,6 @@
-# Goban
+# Goban-server
 
-How to start the Goban application
+How to start the Goban-server application
 ---
 
 1. Run `mvn clean install` to build your application
