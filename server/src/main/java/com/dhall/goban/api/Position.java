@@ -1,17 +1,17 @@
 package com.dhall.goban.api;
 
-import com.dhall.goban.core.COLORS;
+import com.dhall.goban.core.STONE;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Position {
 
     private int x;
     private int y;
-    private COLORS color;
+    private STONE color;
 
     public Position() { }
 
-    public Position(int x, int y, COLORS color) {
+    public Position(int x, int y, STONE color) {
         this.x = x;
         this.y = y;
         this.color = color;
@@ -36,11 +36,11 @@ public class Position {
     }
 
     @JsonProperty
-    public COLORS getColor() {
+    public STONE getColor() {
         return color;
     }
 
-    public void setColor(COLORS color) {
+    public void setColor(STONE color) {
         this.color = color;
     }
 

@@ -6,41 +6,41 @@ import com.google.inject.Singleton;
 @Singleton
 public class GameBoard {
 
-    private COLORS[][] board = new COLORS[19][19];
+    private STONE[][] board = new STONE[19][19];
 
     public GameBoard() {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = COLORS.E;
+                board[i][j] = STONE.E;
             }
         }
-        board[0][0] = COLORS.WHITE;
-        board[18][18] = COLORS.BLACK;
+        board[0][0] = STONE.WHITE;
+        board[18][18] = STONE.BLACK;
     }
 
-    public COLORS[][] getBoard() {
+    public STONE[][] getBoard() {
         return board;
     }
 
     public void makeMove(Position position) {
-        if (board[position.getX()][position.getY()].equals(COLORS.E)) {
+        if (board[position.getX()][position.getY()].equals(STONE.E)) {
             board[position.getX()][position.getY()] = position.getColor();
         }
     }
 
     public int whiteStoneCount() {
-        return getStoneCount(COLORS.WHITE);
+        return getStoneCount(STONE.WHITE);
     }
 
     public int blackStoneCount() {
-        return getStoneCount(COLORS.BLACK);
+        return getStoneCount(STONE.BLACK);
     }
 
     public boolean isEmptySpace(int x, int y) {
-        return board[x][y].equals(COLORS.E);
+        return board[x][y].equals(STONE.E);
     }
 
-    private int getStoneCount(COLORS color) {
+    private int getStoneCount(STONE color) {
         int count = 0;
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[i].length; j++) {

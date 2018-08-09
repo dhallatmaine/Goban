@@ -11,14 +11,14 @@ public class GameBoardTest {
 
     @Test
     public void makeMoveOnEmptySpace() {
-        gameBoard.makeMove(new Position(1, 1, COLORS.WHITE));
+        gameBoard.makeMove(new Position(1, 1, STONE.WHITE));
 
         assertEquals(3, (gameBoard.whiteStoneCount() + gameBoard.blackStoneCount()));
     }
 
     @Test
     public void makeMoveOnOccupiedSpace() {
-        gameBoard.makeMove(new Position(0, 0, COLORS.WHITE));
+        gameBoard.makeMove(new Position(0, 0, STONE.WHITE));
 
         assertEquals(2, (gameBoard.whiteStoneCount() + gameBoard.blackStoneCount()));
     }

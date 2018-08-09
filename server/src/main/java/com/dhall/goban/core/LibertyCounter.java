@@ -15,8 +15,8 @@ public class LibertyCounter {
         return checkLiberties(gameBoard, position.getX(), position.getY(), position.getColor(), 0, checked);
     }
 
-    private static int checkLiberties(GameBoard gameBoard, int x, int y, COLORS color, int liberties, boolean[][] checked) {
-        COLORS[][] board = gameBoard.getBoard();
+    private static int checkLiberties(GameBoard gameBoard, int x, int y, STONE color, int liberties, boolean[][] checked) {
+        STONE[][] board = gameBoard.getBoard();
 
         if (x > 0 && gameBoard.isEmptySpace(x-1, y)) {
             liberties++;

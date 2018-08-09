@@ -1,5 +1,5 @@
 package com.dhall.goban.core;
 
-public enum COLORS {
+public enum STONE {
     WHITE, BLACK, E
 }
