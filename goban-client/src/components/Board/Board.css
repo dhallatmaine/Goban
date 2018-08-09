@@ -1,0 +1,38 @@
+.Board {
+  width: 666px;
+  height: 665px;
+  border: 1px solid #000;
+}
+
+.Grid {
+  width: 665px;
+  height: 665px;
+  border: 2px solid white;
+  margin-left: -1px;
+  margin-top: -1px;
+}
+
+.Grid div {
+  float: left;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.Grid .Black:hover {
+  box-sizing: border-box;
+  left: 0;
+  background-color:black;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #404040;
+  background-image: -webkit-radial-gradient( 40% 40%, circle closest-corner, #404040 0%, rgba(0, 0, 0, 0) 90%);
+  background-image: -moz-radial-gradient( 40% 40%, circle closest-side, #404040 0%, rgba(0, 0, 0, 0) 90%);
+}
+
+.Grid .White:hover {
+  left: 0;
+  box-sizing: border-box;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #404040 , inset -3px -3px 5px gray;
+}
