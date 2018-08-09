@@ -1,0 +1,9 @@
+logging:
+  level: INFO
+  loggers:
+    com.dhall.dropwizard: DEBUG
+
+server:
+  rootPath: /api/*
+
+dateFormat: yyyy-MM-dd'T'HH:mmZ
