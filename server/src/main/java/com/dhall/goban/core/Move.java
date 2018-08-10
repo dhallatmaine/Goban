@@ -6,7 +6,7 @@ public class Move {
 
     public static void make(GameBoard gameBoard, Position position) {
         if (position.getColor().equals(gameBoard.getTurn())) {
-            make(gameBoard, position.getX(), position.getY(), position.getColor());
+            move(gameBoard, position);
         } else {
             return;
         }
@@ -18,11 +18,52 @@ public class Move {
         }
     }
 
-    private static void make(GameBoard gameBoard, int x, int y, STONE color) {
+    private static void move(GameBoard gameBoard, Position position) {
         STONE[][] board = gameBoard.getBoard();
+        int x = position.getX();
+        int y = position.getY();
+        STONE color = position.getColor();
 
-        if (isEmptySpace(board, x, y)) {
-            board[x][y] = color;
+        if (! isEmptySpace(board, x, y)) {
+            return;
+        }
+
+        if (LibertyCounter.getNumberOfLiberties(board, position) == 0) {
+            return;
+        }
+
+        board[x][y] = color;
+
+        if (x > 0) {
+            Position left = new Position(x - 1, y, board[x - 1][y]);
+            if (LibertyCounter.getNumberOfLiberties(board, left) == 0) {
+                // capture x-1, y
+                Capture.capture(gameBoard, left);
+            }
+        }
+
+        if (y < 18) {
+            Position below = new Position(x, y + 1, board[x][y + 1]);
+            if (LibertyCounter.getNumberOfLiberties(board, below) == 0) {
+                // capture x, y+1
+                Capture.capture(gameBoard, below);
+            }
+        }
+
+        if (x < 18) {
+            Position right = new Position(x + 1, y, board[x + 1][y]);
+            if (LibertyCounter.getNumberOfLiberties(board, right) == 0) {
+                // capture x+1, y
+                Capture.capture(gameBoard, right);
+            }
+        }
+
+        if (y > 0) {
+            Position above = new Position(x, y - 1, board[x][y - 1]);
+            if (LibertyCounter.getNumberOfLiberties(board, above) == 0) {
+                // capture x, y-1
+                Capture.capture(gameBoard, above);
+            }
         }
     }
 

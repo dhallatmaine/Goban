@@ -30,9 +30,9 @@ class Board extends Component {
       let inner = [];
       for (let j = 0; j < response.data.board[i].length; j++) {
         let className = null;
-        if (response.data.board[i][j] === "WHITE") {
+        if (response.data.board[j][i] === "WHITE") {
           className = classes.WhiteStone;
-        } else if (response.data.board[i][j] === "BLACK") {
+        } else if (response.data.board[j][i] === "BLACK") {
           className = classes.BlackStone;
         } else {
           if (response.data.turn === "BLACK") {
@@ -45,7 +45,7 @@ class Board extends Component {
           <div
             className={className}
             key={j + '' + i}
-            onClick={() => this.makeMoveHandler(i, j, response.data.turn)}></div>
+            onClick={() => this.makeMoveHandler(j, i, response.data.turn)}></div>
         );
       }
       divs.push(inner);

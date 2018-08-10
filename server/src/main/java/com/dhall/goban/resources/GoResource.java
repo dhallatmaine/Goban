@@ -18,8 +18,9 @@ public class GoResource {
 
     @GET
     public GameBoard getBoardState() {
-        gameBoard.getBoard()[0][0] = STONE.WHITE;
-        gameBoard.getBoard()[18][18] = STONE.BLACK;
+        //gameBoard.getBoard()[0][0] = STONE.WHITE;
+        //gameBoard.getBoard()[1][0] = STONE.BLACK;
+        //gameBoard.getBoard()[1][1] = STONE.BLACK;
         return gameBoard;
     }
 
