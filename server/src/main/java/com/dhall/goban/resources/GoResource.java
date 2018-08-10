@@ -2,6 +2,7 @@ package com.dhall.goban.resources;
 
 import com.dhall.goban.api.Position;
 import com.dhall.goban.core.GameBoard;
+import com.dhall.goban.core.Move;
 import com.dhall.goban.core.STONE;
 import com.google.inject.Inject;
 
@@ -25,7 +26,7 @@ public class GoResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public GameBoard move(Position position) {
-        gameBoard.makeMove(position);
+        Move.make(gameBoard, position);
         return gameBoard;
     }
 

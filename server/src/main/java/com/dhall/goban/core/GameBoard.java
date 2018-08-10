@@ -1,35 +1,40 @@
 package com.dhall.goban.core;
 
-import com.dhall.goban.api.Position;
 import com.google.inject.Singleton;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Singleton
 public class GameBoard {
 
     private STONE[][] board = new STONE[19][19];
-    private STONE turn; // black goes first
+    private STONE turn;
+    private Map<STONE, Integer> captures = new HashMap<>();
 
     public GameBoard() {
         clearBoard();
+
+        // black goes first
         turn = STONE.BLACK;
+        captures.put(STONE.WHITE, 0);
+        captures.put(STONE.BLACK, 0);
     }
 
     public STONE[][] getBoard() {
         return board;
     }
 
-    public void makeMove(Position position) {
-        if (position.getColor().equals(getTurn())) {
-            Move.make(board, position);
-        } else {
-            return;
-        }
+    public STONE getTurn() {
+        return turn;
+    }
 
-        if (position.getColor().equals(STONE.WHITE)) {
-            turn = STONE.BLACK;
-        } else {
-            turn = STONE.WHITE;
-        }
+    public void setTurn(STONE turn) {
+        this.turn = turn;
+    }
+
+    public Map<STONE, Integer> getCaptures() {
+        return captures;
     }
 
     public int whiteStoneCount() {
@@ -42,10 +47,6 @@ public class GameBoard {
 
     public int totalStoneCount() {
         return whiteStoneCount() + blackStoneCount();
-    }
-
-    public STONE getTurn() {
-        return turn;
     }
 
     public void clearBoard() {

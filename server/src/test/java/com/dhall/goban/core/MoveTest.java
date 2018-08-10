@@ -18,16 +18,34 @@ public class MoveTest {
     }
 
     @Test
+    public void testTurn() {
+        Move.make(gameBoard, new Position(0,0, STONE.BLACK));
+        assertEquals(STONE.WHITE, gameBoard.getTurn());
+        assertEquals(1, gameBoard.totalStoneCount());
+
+        Move.make(gameBoard, new Position(18, 18, STONE.WHITE));
+        assertEquals(STONE.BLACK, gameBoard.getTurn());
+        assertEquals(2, gameBoard.totalStoneCount());
+    }
+
+    @Test
+    public void testOutOfOrderTurn() {
+        Move.make(gameBoard, new Position(0, 0, STONE.WHITE));
+        assertEquals(STONE.BLACK, gameBoard.getTurn());
+        assertEquals(0, gameBoard.totalStoneCount());
+    }
+
+    @Test
     public void makeMoveOnEmptySpace() {
-        Move.make(board, new Position(0, 0, STONE.WHITE));
+        Move.make(gameBoard, new Position(0, 0, STONE.BLACK));
 
         assertEquals(1, gameBoard.totalStoneCount());
     }
 
     @Test
     public void makeMoveOnOccupiedSpace() {
-        Move.make(board, new Position(0, 0, STONE.WHITE));
-        Move.make(board, new Position(0, 0, STONE.WHITE));
+        Move.make(gameBoard, new Position(0, 0, STONE.BLACK));
+        Move.make(gameBoard, new Position(0, 0, STONE.WHITE));
 
         assertEquals(1, gameBoard.totalStoneCount());
     }
