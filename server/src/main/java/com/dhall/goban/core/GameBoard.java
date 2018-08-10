@@ -19,8 +19,16 @@ public class GameBoard {
     }
 
     public void makeMove(Position position) {
-        if (board[position.getX()][position.getY()].equals(STONE.E)) {
-            board[position.getX()][position.getY()] = position.getColor();
+        if (position.getColor().equals(getTurn())) {
+            Move.make(board, position);
+        } else {
+            return;
+        }
+
+        if (position.getColor().equals(STONE.WHITE)) {
+            turn = STONE.BLACK;
+        } else {
+            turn = STONE.WHITE;
         }
     }
 
@@ -32,8 +40,8 @@ public class GameBoard {
         return getStoneCount(STONE.BLACK);
     }
 
-    public boolean isEmptySpace(int x, int y) {
-        return board[x][y].equals(STONE.E);
+    public int totalStoneCount() {
+        return whiteStoneCount() + blackStoneCount();
     }
 
     public STONE getTurn() {
