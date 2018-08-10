@@ -19,6 +19,7 @@
   cursor: pointer;
 }
 
+.Grid .BlackStone,
 .Grid .Black:hover {
   box-sizing: border-box;
   left: 0;
@@ -29,6 +30,7 @@
   background-image: -moz-radial-gradient( 40% 40%, circle closest-side, #404040 0%, rgba(0, 0, 0, 0) 90%);
 }
 
+.Grid .WhiteStone,
 .Grid .White:hover {
   left: 0;
   box-sizing: border-box;

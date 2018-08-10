@@ -7,6 +7,7 @@ import com.google.inject.Singleton;
 public class GameBoard {
 
     private STONE[][] board = new STONE[19][19];
+    private STONE turn; // black goes first
 
     public GameBoard() {
         for (int i = 0; i < board.length; i++) {
@@ -16,6 +17,7 @@ public class GameBoard {
         }
         board[0][0] = STONE.WHITE;
         board[18][18] = STONE.BLACK;
+        turn = STONE.BLACK;
     }
 
     public STONE[][] getBoard() {
@@ -38,6 +40,10 @@ public class GameBoard {
 
     public boolean isEmptySpace(int x, int y) {
         return board[x][y].equals(STONE.E);
+    }
+
+    public STONE getTurn() {
+        return turn;
     }
 
     private int getStoneCount(STONE color) {
