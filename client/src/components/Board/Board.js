@@ -10,27 +10,53 @@ class Board extends Component {
     turn: null
   };
 
+  makeMoveHandler = (x, y, color) => {
+    console.log("x:" + x + " y:" + y + " color:" + color);
+    const position = {
+      x: x,
+      y: y,
+      color: color
+    };
+    axios.post('http://localhost:8080/api/go', position)
+      .then(response => {
+        let divs = this.updateBoard(response);
+        this.setState({board: divs, turn: response.data.turn});
+      });
+  }
+
+  updateBoard = (response) => {
+    let divs = [];
+    for (let i = 0; i < response.data.board.length; i++) {
+      let inner = [];
+      for (let j = 0; j < response.data.board[i].length; j++) {
+        let className = null;
+        if (response.data.board[i][j] === "WHITE") {
+          className = classes.WhiteStone;
+        } else if (response.data.board[i][j] === "BLACK") {
+          className = classes.BlackStone;
+        } else {
+          if (response.data.turn === "BLACK") {
+            className = classes.Black;
+          } else {
+            className = classes.White;
+          }
+        }
+        inner.push(
+          <div
+            className={className}
+            key={j + '' + i}
+            onClick={() => this.makeMoveHandler(i, j, response.data.turn)}></div>
+        );
+      }
+      divs.push(inner);
+    }
+    return divs;
+  }
+
   componentDidMount() {
     axios.get('http://localhost:8080/api/go')
       .then(response => {
-        let divs = [];
-        for (let i = 0; i < response.data.board.length; i++) {
-          let inner = [];
-          for (let j = 0; j < response.data.board[i].length; j++) {
-            if (response.data.board[i][j] === "WHITE") {
-              inner.push(<div className={classes.WhiteStone} key={j + '' + i}></div>);
-            } else if (response.data.board[i][j] === "BLACK") {
-              inner.push(<div className={classes.BlackStone} key={j + '' + i}></div>);
-            } else {
-              if (response.data.turn === "BLACK") {
-                inner.push(<div className={classes.Black} key={j + '' + i}></div>);
-              } else {
-                inner.push(<div className={classes.White} key={j + '' + i}></div>);
-              }
-            }
-          }
-          divs.push(inner);
-        }
+        let divs = this.updateBoard(response);
         this.setState({board: divs, turn: response.data.turn});
       });
   }

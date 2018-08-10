@@ -9,5 +9,4 @@ class App extends Component {
     );
   }
 }
-//#bf7937 #d67717
 export default App;
