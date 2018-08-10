@@ -10,13 +10,7 @@ public class GameBoard {
     private STONE turn; // black goes first
 
     public GameBoard() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = STONE.E;
-            }
-        }
-        board[0][0] = STONE.WHITE;
-        board[18][18] = STONE.BLACK;
+        clearBoard();
         turn = STONE.BLACK;
     }
 
@@ -44,6 +38,14 @@ public class GameBoard {
 
     public STONE getTurn() {
         return turn;
+    }
+
+    public void clearBoard() {
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = STONE.E;
+            }
+        }
     }
 
     private int getStoneCount(STONE color) {

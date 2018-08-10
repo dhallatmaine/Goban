@@ -2,6 +2,7 @@ package com.dhall.goban.resources;
 
 import com.dhall.goban.api.Position;
 import com.dhall.goban.core.GameBoard;
+import com.dhall.goban.core.STONE;
 import com.google.inject.Inject;
 
 import javax.ws.rs.*;
@@ -16,6 +17,8 @@ public class GoResource {
 
     @GET
     public GameBoard getBoardState() {
+        gameBoard.getBoard()[0][0] = STONE.WHITE;
+        gameBoard.getBoard()[18][18] = STONE.BLACK;
         return gameBoard;
     }
 

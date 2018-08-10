@@ -17,17 +17,29 @@ public class LibertyCounterTest {
 
     @Test
     public void nonSurroundedCornerLiberties() {
-        int leftTopCorner = LibertyCounter.getNumberOfLiberties(gameBoard, new Position(0, 0, STONE.BLACK));
+        Position black = new Position(0, 0, STONE.BLACK);
+        gameBoard.makeMove(black);
+        int leftTopCorner = LibertyCounter.getNumberOfLiberties(gameBoard, black);
         assertEquals(2, leftTopCorner);
+        gameBoard.clearBoard();
 
-        int rightTopCorner = LibertyCounter.getNumberOfLiberties(gameBoard, new Position(0, 18, STONE.BLACK));
+        black = new Position(0, 18, STONE.BLACK);
+        gameBoard.makeMove(black);
+        int rightTopCorner = LibertyCounter.getNumberOfLiberties(gameBoard, black);
         assertEquals(2, rightTopCorner);
+        gameBoard.clearBoard();
 
-        int leftBottomCorner = LibertyCounter.getNumberOfLiberties(gameBoard, new Position(18, 0, STONE.BLACK));
+        black = new Position(18, 0, STONE.BLACK);
+        gameBoard.makeMove(black);
+        int leftBottomCorner = LibertyCounter.getNumberOfLiberties(gameBoard, black);
         assertEquals(2, leftBottomCorner);
+        gameBoard.clearBoard();
 
-        int rightBottomCorner = LibertyCounter.getNumberOfLiberties(gameBoard, new Position(18, 18, STONE.BLACK));
+        black = new Position(18, 18, STONE.BLACK);
+        gameBoard.makeMove(black);
+        int rightBottomCorner = LibertyCounter.getNumberOfLiberties(gameBoard, black);
         assertEquals(2, rightBottomCorner);
+        gameBoard.clearBoard();
     }
 
     @Test
