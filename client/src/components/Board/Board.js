@@ -19,33 +19,33 @@ class Board extends Component {
     };
     axios.post('http://localhost:8080/api/go', position)
       .then(response => {
-        let divs = this.updateBoard(response);
+        let divs = this.updateBoard(response.data.board);
         this.setState({board: divs, turn: response.data.turn});
       });
   }
 
-  updateBoard = (response) => {
+  updateBoard = (board) => {
     let divs = [];
-    for (let i = 0; i < response.data.board.length; i++) {
+    for (let i = 0; i < board.length; i++) {
       let inner = [];
-      for (let j = 0; j < response.data.board[i].length; j++) {
+      for (let j = 0; j < board[i].length; j++) {
         let className = null;
-        if (response.data.board[j][i] === "WHITE") {
+        if (board[j][i] === "WHITE") {
           className = classes.WhiteStone;
-        } else if (response.data.board[j][i] === "BLACK") {
+        } else if (board[j][i] === "BLACK") {
           className = classes.BlackStone;
         } else {
-          if (response.data.turn === "BLACK") {
-            className = classes.Black;
-          } else {
+          if (this.state.turn === "BLACK") {
             className = classes.White;
+          } else {
+            className = classes.Black;
           }
         }
         inner.push(
           <div
             className={className}
             key={j + '' + i}
-            onClick={() => this.makeMoveHandler(j, i, response.data.turn)}></div>
+            onClick={() => this.makeMoveHandler(j, i, this.state.turn)}></div>
         );
       }
       divs.push(inner);
@@ -56,7 +56,7 @@ class Board extends Component {
   componentDidMount() {
     axios.get('http://localhost:8080/api/go')
       .then(response => {
-        let divs = this.updateBoard(response);
+        let divs = this.updateBoard(response.data.board);
         this.setState({board: divs, turn: response.data.turn});
       });
   }
