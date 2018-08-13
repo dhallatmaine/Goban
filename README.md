@@ -10,3 +10,10 @@ Then run with docker-compose:
 
 Access with your browser:
 `http://localhost`
+
+
+#### TODO
+ * Ko rule
+ * Pass
+ * End game
+ * Scoring
