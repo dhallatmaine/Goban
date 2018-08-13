@@ -23,25 +23,21 @@ public class LibertyCounterTest {
         Move.make(gameBoard, black);
         int leftTopCorner = LibertyCounter.getNumberOfLiberties(board, black);
         assertEquals(2, leftTopCorner);
-        gameBoard.clearBoard();
 
         black = new Position(0, 18, STONE.BLACK);
         Move.make(gameBoard, black);
         int rightTopCorner = LibertyCounter.getNumberOfLiberties(board, black);
         assertEquals(2, rightTopCorner);
-        gameBoard.clearBoard();
 
         black = new Position(18, 0, STONE.BLACK);
         Move.make(gameBoard, black);
         int leftBottomCorner = LibertyCounter.getNumberOfLiberties(board, black);
         assertEquals(2, leftBottomCorner);
-        gameBoard.clearBoard();
 
         black = new Position(18, 18, STONE.BLACK);
         Move.make(gameBoard, black);
         int rightBottomCorner = LibertyCounter.getNumberOfLiberties(board, black);
         assertEquals(2, rightBottomCorner);
-        gameBoard.clearBoard();
     }
 
     @Test

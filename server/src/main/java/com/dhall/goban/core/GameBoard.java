@@ -13,7 +13,11 @@ public class GameBoard {
     private Map<STONE, Integer> captures = new HashMap<>();
 
     public GameBoard() {
-        clearBoard();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = STONE.E;
+            }
+        }
 
         // black goes first
         turn = STONE.BLACK;
@@ -47,14 +51,6 @@ public class GameBoard {
 
     public int totalStoneCount() {
         return whiteStoneCount() + blackStoneCount();
-    }
-
-    public void clearBoard() {
-        for (int i = 0; i < board.length; i++) {
-            for (int j = 0; j < board[i].length; j++) {
-                board[i][j] = STONE.E;
-            }
-        }
     }
 
     private int getStoneCount(STONE color) {
