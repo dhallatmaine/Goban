@@ -6,8 +6,8 @@
 
 .Grid {
   width: 665px;
-  height: 665px;
-  border: 2px solid white;
+  height: 663px;
+  border: 2px solid #dbab3b;
   margin-left: -1px;
   margin-top: -1px;
 }

@@ -18,12 +18,12 @@ class Layout extends Component {
   };
 
   makeMoveHandler = (x, y, color) => {
-    console.log("x:" + x + " y:" + y + " color:" + color);
     const position = {
       x: x,
       y: y,
       color: color
     };
+
     axios.post('http://localhost:8080/api/go', position)
       .then(response => {
         let divs = this.updateBoard(response.data.board);
@@ -80,8 +80,10 @@ class Layout extends Component {
     return (
       <div className={classes.Layout}>
         <Board board={this.state.board} turn={this.state.turn} />
-        <Captures color="WHITE" captures={this.state.captures.WHITE} />
-        <Captures color="BLACK" captures={this.state.captures.BLACK} />
+        <div className={classes.Captures}>
+          <Captures color="WHITE" captures={this.state.captures.WHITE} />
+          <Captures color="BLACK" captures={this.state.captures.BLACK} />
+        </div>
       </div>
     )
   }
