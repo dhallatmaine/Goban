@@ -37,7 +37,6 @@ public class Move {
         if (x > 0) {
             Position left = new Position(x - 1, y, board[x - 1][y]);
             if (LibertyCounter.getNumberOfLiberties(board, left) == 0) {
-                // capture x-1, y
                 Capture.capture(gameBoard, left);
             }
         }
@@ -45,7 +44,6 @@ public class Move {
         if (y < 18) {
             Position below = new Position(x, y + 1, board[x][y + 1]);
             if (LibertyCounter.getNumberOfLiberties(board, below) == 0) {
-                // capture x, y+1
                 Capture.capture(gameBoard, below);
             }
         }
@@ -53,7 +51,6 @@ public class Move {
         if (x < 18) {
             Position right = new Position(x + 1, y, board[x + 1][y]);
             if (LibertyCounter.getNumberOfLiberties(board, right) == 0) {
-                // capture x+1, y
                 Capture.capture(gameBoard, right);
             }
         }
@@ -61,7 +58,6 @@ public class Move {
         if (y > 0) {
             Position above = new Position(x, y - 1, board[x][y - 1]);
             if (LibertyCounter.getNumberOfLiberties(board, above) == 0) {
-                // capture x, y-1
                 Capture.capture(gameBoard, above);
             }
         }
