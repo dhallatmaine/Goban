@@ -7,3 +7,6 @@ Build with docker-compose:
 
 Then run with docker-compose:
 `docker-compose up`
+
+Access with your browser:
+`http://localhost`
