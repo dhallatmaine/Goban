@@ -28,10 +28,6 @@ public class Move {
             return;
         }
 
-        if (LibertyCounter.getNumberOfLiberties(board, position) == 0) {
-            return;
-        }
-
         board[x][y] = color;
 
         if (x > 0) {

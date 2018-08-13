@@ -67,7 +67,6 @@ public class CaptureTest {
         assertEquals(0, gameBoard.whiteStoneCount());
     }
 
-    @Ignore
     @Test
     public void testInsideCapture() {
         board[0][1] = STONE.WHITE;
