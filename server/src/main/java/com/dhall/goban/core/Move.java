@@ -11,11 +11,7 @@ public class Move {
             return;
         }
 
-        if (position.getColor().equals(STONE.WHITE)) {
-            gameBoard.setTurn(STONE.BLACK);
-        } else {
-            gameBoard.setTurn(STONE.WHITE);
-        }
+        gameBoard.setTurn(STONE.opposite(position.getColor()));
     }
 
     private static void move(GameBoard gameBoard, Position position) {
