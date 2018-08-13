@@ -4,7 +4,7 @@ import classes from './Captures.css';
 
 const captures = (props) => (
   <div className={classes.Captures}>
-    {props.color} has {props.captures} captures
+    {props.color}: {props.captures}
   </div>
 );
 

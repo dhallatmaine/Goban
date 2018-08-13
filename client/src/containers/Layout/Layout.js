@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import Board from '../Board/Board';
-import Captures from '../Captures/Captures';
+import Board from '../../components/Board/Board';
+import Captures from '../../components/Captures/Captures';
+import Turn from '../../components/Turn/Turn';
 import classes from './Layout.css';
-import boardClasses from '../Board/Board.css';
+import boardClasses from '../../components/Board/Board.css';
 
 class Layout extends Component {
 
@@ -83,6 +84,7 @@ class Layout extends Component {
         <div className={classes.Captures}>
           <Captures color="WHITE" captures={this.state.captures.WHITE} />
           <Captures color="BLACK" captures={this.state.captures.BLACK} />
+          <Turn turn={this.state.turn} />
         </div>
       </div>
     )
