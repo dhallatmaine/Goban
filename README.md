@@ -1,3 +1,9 @@
 # Goban game
 
-Made with Dropwizard and react. Please consult the readme's inside of the server and client for information on how to start the applications.
+Made with Dropwizard and react.
+
+Build with docker-compose:
+`docker-compose build`
+
+Then run with docker-compose:
+`docker-compose up`
