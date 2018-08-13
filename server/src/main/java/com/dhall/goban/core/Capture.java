@@ -32,8 +32,9 @@ public class Capture {
             capture(gameBoard, new Position(x, y-1, color));
         }
 
-        int captures = gameBoard.getCaptures().get(color);
-        gameBoard.getCaptures().put(color, captures + 1);
+        STONE capturer = STONE.opposite(color);
+        int captures = gameBoard.getCaptures().get(capturer);
+        gameBoard.getCaptures().put(capturer, captures + 1);
     }
 
 }
